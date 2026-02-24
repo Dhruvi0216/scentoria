@@ -2,7 +2,8 @@
 INSERT INTO brands (name, country, type)
 VALUES ('Chanel', 'France', 'Designer')
 ON CONFLICT (name) DO NOTHING;
-git add filename
+
+
 WITH brand_id AS (SELECT id FROM brands WHERE name = 'Chanel' LIMIT 1)
 INSERT INTO perfumes (brand_id, name, slug, year, concentration, image_url, status)
 SELECT 
@@ -16,7 +17,7 @@ SELECT
 FROM brand_id
 ON CONFLICT (slug) DO NOTHING;
 
--- Insert Accords (Example weights)
+
 WITH perfume_curr AS (SELECT id FROM perfumes WHERE slug = 'bleu-de-chanel-edp' LIMIT 1)
 INSERT INTO accords (perfume_id, accord_name, weight)
 SELECT id, 'Citrus', 90 FROM perfume_curr
