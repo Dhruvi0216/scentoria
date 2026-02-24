@@ -1,9 +1,8 @@
--- Insert Brand
+
 INSERT INTO brands (name, country, type)
 VALUES ('Chanel', 'France', 'Designer')
 ON CONFLICT (name) DO NOTHING;
-
--- Insert Perfume
+git add filename
 WITH brand_id AS (SELECT id FROM brands WHERE name = 'Chanel' LIMIT 1)
 INSERT INTO perfumes (brand_id, name, slug, year, concentration, image_url, status)
 SELECT 
